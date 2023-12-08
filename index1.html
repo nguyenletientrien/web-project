@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LapLand.COM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header_container">
+            <nav class="navigation">
+                <h2 onclick="window.location.href='index1.html'">
+                    <div>
+                        <h3 class="strip" style="background-color: linear-gradient(15deg, #00a9f1, #cf00f1);
+                    color: linear-gradient(15deg, #00a9f1, #cf00f1);">
+                            LapLand
+                            <h3>
+                    </div>
+                </h2>
+
+
+                <div id="searching">
+                    <input type="text" placeholder="Tìm kiếm sản phẩm...">
+                    <span class="searching-button">
+                        <ion-icon name="search-outline"></ion-icon>
+                        <div>Tìm kiếm</div>
+
+                    </span>
+                </div>
+                <div id="product-button" onclick="window.location.href='index1.html'">SẢN PHẨM</div>
+                <div id="addtocart">
+                    <span style="font-size:15px;"><ion-icon name="cart-outline"></ion-icon></span>
+                    <br>
+                    <span class="total-price-value"></span>
+                </div>
+
+                <span id="icon__for-more-information"><img class="icn1 menuicn1" id="menuicn1" alt="menu-icon"
+                        name="person-circle-outline" src="OIP.jpeg" style="width: 40px;height: 40px;" role="button">
+
+                </span>
+
+            </nav>
+        </div>
+        <button class="responsive-icon"><ion-icon name="menu-outline"></ion-icon></button>
+        <div class="pro-menu">
+
+            <div class="menu-container">
+                <div class="logosec">
+                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+                        class="icn menuicn" id="menuicn" alt="menu-icon">
+                </div>
+            </div>
+            <div class="advance-search" style="padding-right:10px;">
+                <div style="display: none;">
+                    <p style="color:white;margin-right: 20px;">PHÂN LOẠI</p>
+                    <select style="top:-10px">
+                        <option value="ASUS">ASUS</option>
+                        <option value="ACER">ACER</option>
+                        <option value="HP">HP</option>
+                        <option value="DELL">DELL</option>
+                        <option value="LENOVO">LENOVO</option>
+                        <option value="MSI">MSI</option>
+                    </select>
+                </div>
+                <div class="min"><input type="text" placeholder="GIÁ THẤP NHẤT"></div>
+                <div class="max"><input type="text" placeholder="GIÁ CAO NHẤT"></div>
+                <button class="min-max-confirm">
+                    <ion-icon name="search-circle-outline">
+
+                    </ion-icon>
+                </button>
+            </div>
+        </div>
+        <section class="cart">
+            <h2 style="margin-top:20px;margin-bottom: 30px;">DANH SÁCH SẢN PHẨM ĐÃ ĐẶT</h2>
+            <span class="close-button-cart">x</span>
+            <form action="">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SẢN PHẨM</th>
+                            <th>GIÁ</th>
+                            <th>SỐ LƯỢNG</th>
+                            <th>XÓA</th>
+                        </tr>
+                    </thead>
+                    <tbody style="height:auto">
+
+                    </tbody>
+                </table>
+                <div class="price-total" style="text-align: right;">
+                    <p>Tổng tiền : <span></span><sup>đ</sup></p>
+                </div>
+                <button class="purchase-button" , onclick="handlePurchaseButtonClick()">CHỐT ĐƠN</button>
+            </form>
+        </section>
+
+        <div class="container2" style="display: none ;">
+            <div class="auth__form-container2">
+                <div class="auth__form-sigin">
+                    <h2 class="auth__form-sigin-title-dk">
+                        Đăng ký
+                    </h2>
+                    <i class="fa-regular fa-circle-xmark fa-2xl" , id="auth__form-icon-exit-2" ,
+                        onclick="exitForm()"></i>
+                </div>
+                <div class="auth__form-signin-input-2">
+                    <div class=" auth__form-group">
+                        <input type="text" class="auth__form-sigin-input-user" placeholder="Nhập tên đăng nhập">
+                    </div>
+                    <div class="auth__form-group">
+                        <input type="text" class="auth__form-signin-input-name" placeholder="Nhập họ tên">
+                    </div>
+                    <div class="auth__form-group">
+                        <input type="text" class="auth__form-signin-input-email" placeholder="Nhập email">
+                    </div>
+                    <div class="auth__form-group">
+                        <input type="text" class="auth__form-signin-input-phone-nums" placeholder="Nhập số điện thoại">
+                    </div>
+                    <div class="auth__form-group">
+                        <input type="password" class="auth__form-signin-input-password" placeholder="Nhập password">
+                    </div>
+                    <div class="auth__form-group">
+                        <input type="password" class="auth__form-signin-input-password-confirm"
+                            placeholder="Nhập lại password">
+                    </div>
+                </div>
+                <div class="auth__form-checkbox">
+                    <input type="checkbox" class="auth__form-signin-checkbox">
+                    <p class="auth__form-signin-checkbox-para">Đồng ý các điều khoản dịch vụ để hoàn
+                        tất
+                        đăng ký</p>
+                </div>
+                <div class="auth__form-existed-account">
+                    <p class="para__existed-acc" , onclick="existed_account('changing_into_login')">
+                        Đã có tài khoản
+                    </p>
+                </div>
+                <div class="auth__form-signin-submit">
+                    <button class="auth__form-signin-btn-submit" , onclick="registerUser()">Đăng
+                        ký</button>
+                </div>
+            </div>
+        </div>
+        <div class="container1" style="display: none;">
+            <div class="auth__form-container1">
+                <div class="auth__form-login">
+                    <h2 class="auth__form-login-tile-dn">
+                        Đăng nhập
+                    </h2>
+                    <i class="fa-regular fa-circle-xmark fa-2xl" , id="auth__form-icon-exit-1" ,
+                        onclick="exitForm()"></i>
+                </div>
+                <div class="auth__form-login-input-1">
+                    <input type="text" class="auth__form-login-username" placeholder="Tên đăng nhập">
+                </div>
+                <div class="auth__form-login-input-1">
+                    <input type="password" class="auth__form-login-pasword" placeholder="Mật khẩu">
+                </div>
+            </div>
+            <din class="auth__form-no-account">
+                <p class="para__no-account">Chưa có tài khoản</p>
+            </din>
+            <div class="auth__form-login-submit">
+                <button class="auth__form-login-btn-submit" , onclick="loginUser()">Đăng
+                    nhập</button>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">
+
+                    </div>
+                    <div class="filter-buttonrs" id="ALL" onclick="filterProductrs('ALL')">ALL</div>
+                    <div class="filter-buttonrs" id="ACER" onclick="filterProductrs('ACER')">ACER</div>
+                    <div class="filter-buttonrs" id="ASUS" onclick="filterProductrs('ASUS')">ASUS</div>
+                    <div class="filter-buttonrs" id="HP" onclick="filterProductrs('HP')">HP</div>
+                    <div class="filter-buttonrs" id="DELL" onclick="filterProductrs('DELL')">DELL</div>
+                    <div class="filter-buttonrs" id="LENOVO" onclick="filterProductrs('LENOVO')">LENOVO</div>
+                    <div class="filter-buttonrs" id="MSI" onclick="filterProductrs('MSI')">MSI</div>
+
+
+                </div>
+            </nav>
+        </div>
+
+        <div class="main">
+            <div class="slideshow">
+                <div class="pic-wrapper">
+                    <figure class="pic-1"></figure>
+                    <figure class="pic-2"></figure>
+                </div>
+            </div>
+            <div class="report-container">
+                <div class="products"></div>
+            </div>
+
+            <div class="pre-next-span">
+
+            </div>
+
+
+
+            <ul class="listPage">
+                <li class="active">1</li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+
+
+            <div class="detail-container">
+
+            </div>
+            <footer>
+                <div class="footer">
+                    Website showcase Laptop
+
+                </div>
+            </footer>
+        </div>
+
+        <div class="page__infor-users" , style="display: none; position: absolute;">
+            <div class="page__user-infor-group">
+                <div class="page__infor-title">
+                    <h1 class="page__title">Thông tin người dùng</h1>
+                    <i class="fa-solid fa-xmark" id="icon_exit" onclick="OffInfo()"></i>
+                </div>
+                <div class="page__infor-name-id">
+                    <p class="user-infor-name">Tên khách hàng: </p>
+                    <p class="user-infor-id">Mã khách hàng: </p>
+                </div>
+                <div class="page__infor-phone-number">
+                    <p class="user-infor-phone-nums">Số điện thoại: </p>
+                </div>
+                <div class="page__infor-email">
+                    <p class="user-infor-email">Địa chỉ Email: </p>
+                </div>
+            </div>
+            <div class="page__order-bilss-group">
+                <div class="page__order-bills-title">
+                    <h2 class="bills-title">Đơn hàng người dùng </h2>
+                </div>
+                <div class="report-body">
+                    <section style="width: 100%;display:flex; justify-content: center; position: relative;">
+                        <table style="width:100%;border:1px solid black;">
+                            <thead>
+                                <tr>
+                                    <th style="border-right: 1px solid black;">ID ĐƠN HÀNG</th>
+                                    <th style="border-right: 1px solid black;">ID NGƯỜI MUA</th>
+                                    <TH style="border-right: 1px solid black;">CHI TIẾT ĐƠN HÀNG</TH>
+                                    <th style="border-right: 1px solid black;">THỜI GIAN MUA HÀNG</th>
+                                    <TH>TRẠNG THÁI ĐƠN HÀNG</TH>
+                                </tr>
+                            </thead>
+                            <tbody id="orderTableBody">
+
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <div class="navcontainer1">
+            <nav class="nav1">
+                <div class="nav-upper-options">
+
+                </div>
+                <div class="nav-option option1">
+
+                </div>
+                <div class="nav-option option2">
+                    <img class="icn2 menuicn2" id="menuicn2" alt="menu-icon" name="person-circle-outline" src="OIP.jpeg"
+                        style="width: 40px;height: 40px;" role="button">
+                    <div id="container_client" , style="display: none;">
+                        <p id="auth__form-client">CHÀO </p>
+                    </div>
+                </div>
+                <div class="navcontainer2">
+                    <nav class="nav2">
+                        <div class="nav-upper-options">
+
+                        </div>
+                        <div class="nav-option option2">
+                            <div class="feature__group">
+                                <div id="information" , style="display: none;" , style="cursor: pointer;">
+                                    <p id="account__information" , onclick="DisplatInf()"> THÔNG TIN</p>
+                                </div>
+                            </div>
+                            <div id="login-words">
+                                <div id="container__login-form">
+                                    <p id="container__login" , onclick="toggleSignupAndLogin('login')"
+                                        style="padding-left: -20px;">ĐĂNG NHẬP</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-option option3">
+                            <div class="feature__group">
+                                <div id="container_exit_client" , style="display: none;" , onclick="logoutUser()">
+                                    <p id="exit__client">ĐĂNG XUẤT</p>
+                                </div>
+                            </div>
+                            <div class="feature__group">
+                                <div id="login-words">
+                                    <div id="container__signup-form">
+                                        <p id="container__signup" , onclick="toggleSignupAndLogin('signup')" ,
+                                            style="padding-left: -20px;">ĐĂNG KÝ</p>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </nav>
+        </div>
+    </div>
+    </div>
+    </div>
+    </nav>
+    </div>
+
+    </div>
+
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/42b54e27fe.js" crossorigin="anonymous"></script>
+    <!-- <script src="form.js"></script>
+<script src="pagination.js" defer></script>
+<script src="render.js"></script>  
+<script src="searching_filter.js" defer></script>
+<script src="products_detail.js" defer></script>
+<script src="shoppingCart.js" defer></script> -->
+    <script src="script.js" defer></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+    <script>
+        let menuicn = document.querySelector(".menuicn");
+        let nav = document.querySelector(".navcontainer");
+
+        menuicn.addEventListener("click", () => {
+            nav.classList.toggle("navclose");
+        })
+
+
+        let menuicn1 = document.querySelector(".menuicn1");
+        let nav1 = document.querySelector(".navcontainer1");
+
+        menuicn1.addEventListener("click", () => {
+            nav1.classList.toggle("navclose1");
+        })
+
+        let menuicn2 = document.querySelector(".menuicn2");
+        let nav2 = document.querySelector(".navcontainer2");
+
+        menuicn2.addEventListener("click", () => {
+            nav2.classList.toggle("navclose2");
+        })
+
+    </script>
+    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
