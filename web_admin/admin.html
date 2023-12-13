@@ -2,32 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin panel</title>
-    <link rel="stylesheet" href="admin.js" />
+    <link rel="stylesheet" href="admin.js">
 
-    <link rel="stylesheet" href="Untitled-1.css" />
+    <link rel="stylesheet" href="Untitled-1.css">
     <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css"
-        rel="stylesheet" />
+        rel="stylesheet">
+
 </head>
 
 <body>
+
     <header>
         <div class="logosec">
             <div class="logo">ADMIN PANEL</div>
             <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
-                class="icn menuicn" id="menuicn" alt="menu-icon" />
+                class="icn menuicn" id="menuicn" alt="menu-icon">
         </div>
         <div class="message">
             <div class="circle"></div>
-            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="" />
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="">
             <div class="dp">
                 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png"
-                    class="dpicn" alt="dp" />
+                    class="dpicn" alt="dp">
             </div>
         </div>
+
     </header>
+
+
 
     <div class="main-container">
         <div class="navcontainer">
@@ -35,206 +40,167 @@
                 <div class="nav-upper-options">
                     <div class="nav-option option1">
                         <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182148/Untitled-design-(29).png"
-                            class="nav-img" alt="dashboard" />
-                        <h3>Dashboard</h3>
+                            class="nav-img" alt="dashboard">
+                        <h3> Dashboard</h3>
                     </div>
 
                     <div class="option2 nav-option">
-                        <img src="img/9.png" class="nav-img" alt="articles" />
+                        <img src="img/9.png" class="nav-img" alt="articles">
                         <h3>
-                            <p>
-                                <a onclick="active_function('QUẢN LÍ ĐƠN HÀNG')">QUẢN LÝ ĐƠN HÀNG</a>
-                            </p>
+                            <p><a onclick="active_function('QUẢN LÍ ĐƠN HÀNG')">QUẢN LÝ ĐƠN HÀNG</a></p>
                         </h3>
                     </div>
 
                     <div class="option3 nav-option">
-                        <img src="img/5.png" class="nav-img" alt="articles" />
+                        <img src="img/5.png" class="nav-img" alt="articles">
                         <h3>
                             <p><a onclick="active_function('thongkesp')">THỐNG KÊ</a></p>
                         </h3>
                     </div>
                     <div class="option4 nav-option">
-                        <img src="img/10.png" class="nav-img" alt="articles" />
+                        <img src="img/10.png" class="nav-img" alt="articles">
                         <h3>
-                            <p>
-                                <a onclick="active_function('QUẢN LÍ NGƯỜI DÙNG')">QUẢN LÝ NGƯỜI DÙNG</a>
-                            </p>
+                            <p><a onclick="active_function('QUẢN LÍ NGƯỜI DÙNG')">QUẢN LÝ NGƯỜI DÙNG</a></p>
                         </h3>
                     </div>
                     <div class="option3 nav-option">
-                        <img src="img/10.png" class="nav-img" alt="articles" />
+                        <img src="img/10.png" class="nav-img" alt="articles">
                         <h3>
-                            <p>
-                                <a onclick="active_function('QUẢN LÍ SẢN PHẨM')">QUẢN LÝ SẢN PHẨM</a>
-                            </p>
+                            <p><a onclick="active_function('QUẢN LÍ SẢN PHẨM')">QUẢN LÝ SẢN PHẨM</a></p>
                         </h3>
                     </div>
                 </div>
             </nav>
         </div>
         <div class="main">
+
+
             <div class="report-container manage_container user_manage_container" id="QUẢN LÍ NGƯỜI DÙNG"
-                style="display: none">
+                style="display:none">
                 <div class="report-header">
                     <h1 class="recent-Articles">QUẢN LÍ NGƯỜI DÙNG</h1>
                 </div>
 
                 <div class="report-body">
-                    <section style="
-                width: 100%;
-                display: flex;
-                margin-top: 20px;
-                justify-content: center;
-                position: relative;
-                top: 30px;
-              ">
-                        <table style="width: 80%; border: 1px solid black">
+                    <section
+                        style="width: 100%;display:flex;margin-top:20px; justify-content: center; position: relative; top: 30px;">
+                        <table style="width:80%;border:1px solid black;">
                             <thead>
                                 <tr>
-                                    <th style="border-right: 1px solid black">ID NGƯỜI DÙNG</th>
-                                    <th style="border-right: 1px solid black">TÀI KHOẢN</th>
-                                    <th style="border-right: 1px solid black">TÊN</th>
-                                    <th style="border-right: 1px solid black">ĐỊA CHỈ MAIL</th>
-                                    <th>SỐ ĐIỆN THOẠI</th>
+                                    <th style="border-right: 1px solid black;">ID NGƯỜI DÙNG</th>
+                                    <th style="border-right: 1px solid black;">TÀI KHOẢN</th>
+                                    <TH style="border-right: 1px solid black;">TÊN</TH>
+                                    <th style="border-right: 1px solid black;"> ĐỊA CHỈ MAIL</th>
+                                    <TH>SỐ ĐIỆN THOẠI</TH>
                                 </tr>
                             </thead>
-                            <tbody id="userTableBody"></tbody>
+                            <tbody id="userTableBody">
+
+                            </tbody>
                         </table>
                     </section>
                 </div>
             </div>
 
             <div class="report-container manage_container product_manage_container" id="QUẢN LÍ SẢN PHẨM"
-                style="display: none">
+                style="display:none">
                 <div class="report-header">
                     <h1 class="recent-Articles">QUẢN LÝ SẢN PHẨM</h1>
-                    <button style="
-                margin-left: 100px;
-                border: 1px solid black;
-                padding: 5px 5px;
-              ">
-                        THÊM SẢN PHẨM
-                    </button>
-                    <button class="fix_btn" style="
-                margin-left: 10px;
-                border: 1px solid black;
-                padding: 5px 5px;
-              ">
-                        SỬA SẢN PHẨM
-                    </button>
+                    <button style="margin-left:100px;border:1px solid black;padding:5px 5px;">THÊM SẢN PHẨM</button>
+                    <button class="fix_btn" style="margin-left:10px;border:1px solid black;padding:5px 5px;">SỬA SẢN
+                        PHẨM</button>
                 </div>
 
                 <div class="report-body">
-                    <section style="
-                width: 100%;
-                display: flex;
-                margin-top: 20px;
-                justify-content: center;
-              ">
-                        <table style="width: 80%; border: 1px solid black">
+                    <section style="width: 100%;display:flex;margin-top:20px; justify-content: center;">
+                        <table style="width:80%;border:1px solid black;">
                             <thead>
                                 <tr>
-                                    <th style="border-right: 1px solid black">SẢN PHẨM</th>
-                                    <th style="border-right: 1px solid black">GIÁ</th>
+                                    <th style="border-right: 1px solid black;">SẢN PHẨM</th>
+                                    <th style="border-right: 1px solid black;">GIÁ</th>
                                     <th>XÓA</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+
+                            </tbody>
                         </table>
 
                         <div class="addproduct">
                             <span>x</span>
                             <h2>THÊM SẢN PHẨM MỚI</h2>
-                            <input style="margin: 10px" class="input_file" type="file" />
-                            <img src="" alt="" />
-                            <input class="product_name_input" placeholder="Nhập tên sản phẩm" type="text" />
-                            <input class="price_admin_input" placeholder="Nhập giá" type="text" />
+                            <input style="margin: 10px;" class="input_file" type="file">
+                            <img src="" alt="">
+                            <input class="product_name_input" placeholder="Nhập tên sản phẩm" type="text">
+                            <input class="price_admin_input" placeholder="Nhập giá" type="text">
                             <button>Thêm</button>
                         </div>
 
                         <div class="fixproduct">
-                            <span style="
-                    position: absolute;
-                    top: 5px;
-                    right: 5px;
-                    font-size: 20px;
-                    cursor: pointer;
-                  ">x</span>
+                            <span style="position: absolute;top:5px;right:5px;font-size:20px;cursor: pointer;">x</span>
                             <h2>SỬA SẢN PHẨM</h2>
                             <label for="find_product">Tìm Kiếm Sản Phẩm</label>
                             <div>
                                 <select name="" id="find_product"></select>
                             </div>
-                            <input style="margin: 10px" class="fix input_file" type="file" />
-                            <img style="margin: 10px" src="" alt="" />
+                            <input style="margin: 10px;" class="fix input_file" type="file">
+                            <img style="margin: 10px;" src="" alt="">
 
-                            <div>
-                                <input style="margin: 10px" class="fix product_name_input"
-                                    placeholder="Nhập tên sản phẩm" type="text" />
-                            </div>
 
-                            <div>
-                                <input style="margin: 10px" class="fix price_admin_input" placeholder="Nhập giá"
-                                    type="text" />
-                            </div>
+                            <div><input style="margin: 10px;" class="fix product_name_input"
+                                    placeholder="Nhập tên sản phẩm" type="text"></div>
+
+                            <div><input style="margin: 10px;" class="fix price_admin_input" placeholder="Nhập giá"
+                                    type="text"></div>
                             <button class="fixprbtn">SỬA</button>
-                            <div class="showProductFound" style="width: 100%; float: left"></div>
+                            <div class="showProductFound" style="width:100%;float:left;"></div>
                         </div>
+
                     </section>
                 </div>
             </div>
 
             <div class="report-container manage_container order_manage_container" id="QUẢN LÍ ĐƠN HÀNG"
-                style="display: none">
+                style="display:none">
                 <div class="report-header">
                     <h1 class="recent-Articles">QUẢN LÝ ĐƠN HÀNG</h1>
                     <div class="searchbar">
-                        <input id="findbartag" type="text" placeholder="Nhập ngày/tháng/năm đặt" />
+                        <input id="findbartag" type="text" placeholder="Nhập ngày/tháng/năm đặt">
                         <button class="searchbtn" name="datesearch" type="button" id="findtag"
                             onclick="myFunction007();">
-                            <img src="img/Untitled-design-(28).png" class="icn srchicn" alt="search-icon" />
+                            <img src="img/Untitled-design-(28).png" class="icn srchicn" alt="search-icon">
                         </button>
                     </div>
                 </div>
 
                 <div class="report-body">
-                    <section style="
-                width: 100%;
-                display: flex;
-                margin-top: 20px;
-                justify-content: center;
-                position: relative;
-                top: 30px;
-              ">
-                        <table style="width: 80%; border: 1px solid black">
+                    <section
+                        style="width: 100%;display:flex;margin-top:20px; justify-content: center; position: relative; top: 30px;">
+                        <table style="width:80%;border:1px solid black;">
                             <thead>
                                 <tr>
-                                    <th style="border-right: 1px solid black">ID ĐƠN HÀNG</th>
-                                    <th style="border-right: 1px solid black">ID NGƯỜI MUA</th>
-                                    <th style="border-right: 1px solid black">
-                                        CHI TIẾT ĐƠN HÀNG
-                                    </th>
-                                    <th style="border-right: 1px solid black">
-                                        THỜI GIAN MUA HÀNG
-                                    </th>
-                                    <th>TRẠNG THÁI ĐƠN HÀNG</th>
+                                    <th style="border-right: 1px solid black;">ID ĐƠN HÀNG</th>
+                                    <th style="border-right: 1px solid black;">ID NGƯỜI MUA</th>
+                                    <TH style="border-right: 1px solid black;">CHI TIẾT ĐƠN HÀNG</TH>
+                                    <th style="border-right: 1px solid black;">THỜI GIAN MUA HÀNG</th>
+                                    <TH>TRẠNG THÁI ĐƠN HÀNG</TH>
                                 </tr>
                             </thead>
-                            <tbody id="orderTableBody"></tbody>
+                            <tbody id="orderTableBody">
+
+                            </tbody>
                         </table>
                     </section>
                 </div>
             </div>
-
             <div class="report-container manage_container order_manage_container" id="thongkesp">
                 <div class="report-header">
                     <h1 class="recent-Articles">THỐNG KÊ SẢN PHẨM</h1>
-                    <div class="searchbar" id="searchbar_thongke">
+                    <div class="searchbar">
                         <input type="text" id="myInput_searchbar" placeholder="Search" />
-                        <div class="searchbtn searching-button searching-button-static">
+                        <div class="searchbtn searching-button">
                             <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
-                                class="icn srchicn" alt="search-icon" />
+                                class="icn srchicn" alt="search-icon">
                         </div>
                     </div>
                 </div>
@@ -249,12 +215,20 @@
 
                     <div class="items">
                         <table class="products" id="staticproduct"></table>
+
+                        </table>
                     </div>
-                    <div class="detail-container"></div>
+                    <div class="detail-container">
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+
+
 
     <script src="admin.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -269,7 +243,7 @@
 
         menuicn.addEventListener("click", () => {
             nav.classList.toggle("navclose");
-        });
+        })
     </script>
     <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

@@ -114,7 +114,6 @@ function loginUser() {
     var username = document.querySelector('.auth__form-login-username').value;
     var password = document.querySelector('.auth__form-login-pasword').value;
 
-
     // Retrieve existing users from localStorage or initialize an empty array
     var existingUsers = JSON.parse(localStorage.getItem('users')) || [];
 
@@ -122,24 +121,18 @@ function loginUser() {
     var loggedInUser = existingUsers.find(u => u.username === username && u.password === password);
 
     if (loggedInUser) {
-        if (JSON.stringify(username) == 'admin1') {
-            window.location.href = "admin.html";
-        }
-        else {
+        // Successful login
+        alert('Đăng nhập thành công');
 
-            // Successful login
-            alert('Đăng nhập thành công');
+        // hide login form
+        document.getElementById("container__signup-form").style.display = 'none';
+        document.getElementById('container__login-form').style.display = 'none';
 
-            // hide login form
-            document.getElementById("container__signup-form").style.display = 'none';
-            document.getElementById('container__login-form').style.display = 'none';
+        //show welcome
+        document.getElementById('container_client').style.display = 'block';
+        document.getElementById('auth__form-client').innerHTML = 'CHÀO, ' + username;
 
-            //show welcome
-            document.getElementById('container_client').style.display = 'block';
-            document.getElementById('auth__form-client').innerHTML = 'CHÀO, ' + username;
-
-            document.getElementById('container_exit_client').style.display = 'block';
-        }
+        document.getElementById('container_exit_client').style.display = 'block';
     } else {
         // Invalid username or password
         alert('Tên đăng nhập hoặc mật khẩu không đúng');

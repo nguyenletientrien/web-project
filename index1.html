@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LapLand.COM</title>
+    <title>WEB LAP_GROUP 14</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,12 +16,12 @@
                     <div>
                         <h3 class="strip" style="background-color: linear-gradient(15deg, #00a9f1, #cf00f1);
                     color: linear-gradient(15deg, #00a9f1, #cf00f1);">
-                            LapLand
+                            LAPTOP
                             <h3>
                     </div>
                 </h2>
 
-
+                
                 <div id="searching">
                     <input type="text" placeholder="Tìm kiếm sản phẩm...">
                     <span class="searching-button">
@@ -37,9 +37,8 @@
                     <span class="total-price-value"></span>
                 </div>
 
-                <span id="icon__for-more-information"><img class="icn1 menuicn1" id="menuicn1" alt="menu-icon"
-                        name="person-circle-outline" src="OIP.jpeg" style="width: 40px;height: 40px;" role="button">
-
+                <span id="icon__for-more-information"><img class="icn1 menuicn1" id="menuicn1" alt="menu-icon" name="person-circle-outline" src="OIP.jpeg" style="width: 40px;height: 40px;" role="button">
+                    
                 </span>
 
             </nav>
@@ -52,6 +51,13 @@
                     <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
                         class="icn menuicn" id="menuicn" alt="menu-icon">
                 </div>
+                <div class="filter-button" id="ALL" onclick="filterProduct('ALL')">ALL</div>
+                <div class="filter-button" id="ACER" onclick="filterProduct('ACER')">ACER</div>
+                <div class="filter-button" id="ASUS" onclick="filterProduct('ASUS')">ASUS</div>
+                <div class="filter-button" id="HP" onclick="filterProduct('HP')">HP</div>
+                <div class="filter-button" id="DELL" onclick="filterProduct('DELL')">DELL</div>
+                <div class="filter-button" id="LENOVO" onclick="filterProduct('LENOVO')">LENOVO</div>
+                <div class="filter-button" id="MSI" onclick="filterProduct('MSI')">MSI</div>
             </div>
             <div class="advance-search" style="padding-right:10px;">
                 <div style="display: none;">
@@ -69,7 +75,7 @@
                 <div class="max"><input type="text" placeholder="GIÁ CAO NHẤT"></div>
                 <button class="min-max-confirm">
                     <ion-icon name="search-circle-outline">
-
+                        
                     </ion-icon>
                 </button>
             </div>
@@ -109,19 +115,24 @@
                 </div>
                 <div class="auth__form-signin-input-2">
                     <div class=" auth__form-group">
-                        <input type="text" class="auth__form-sigin-input-user" placeholder="Nhập tên đăng nhập">
+                        <input type="text" class="auth__form-sigin-input-user"
+                            placeholder="Nhập tên đăng nhập">
                     </div>
                     <div class="auth__form-group">
-                        <input type="text" class="auth__form-signin-input-name" placeholder="Nhập họ tên">
+                        <input type="text" class="auth__form-signin-input-name"
+                            placeholder="Nhập họ tên">
                     </div>
                     <div class="auth__form-group">
-                        <input type="text" class="auth__form-signin-input-email" placeholder="Nhập email">
+                        <input type="text" class="auth__form-signin-input-email"
+                            placeholder="Nhập email">
                     </div>
                     <div class="auth__form-group">
-                        <input type="text" class="auth__form-signin-input-phone-nums" placeholder="Nhập số điện thoại">
+                        <input type="text" class="auth__form-signin-input-phone-nums"
+                            placeholder="Nhập số điện thoại">
                     </div>
                     <div class="auth__form-group">
-                        <input type="password" class="auth__form-signin-input-password" placeholder="Nhập password">
+                        <input type="password" class="auth__form-signin-input-password"
+                            placeholder="Nhập password">
                     </div>
                     <div class="auth__form-group">
                         <input type="password" class="auth__form-signin-input-password-confirm"
@@ -155,7 +166,8 @@
                         onclick="exitForm()"></i>
                 </div>
                 <div class="auth__form-login-input-1">
-                    <input type="text" class="auth__form-login-username" placeholder="Tên đăng nhập">
+                    <input type="text" class="auth__form-login-username"
+                        placeholder="Tên đăng nhập">
                 </div>
                 <div class="auth__form-login-input-1">
                     <input type="password" class="auth__form-login-pasword" placeholder="Mật khẩu">
@@ -223,7 +235,7 @@
             <footer>
                 <div class="footer">
                     Website showcase Laptop
-
+                    
                 </div>
             </footer>
         </div>
@@ -262,7 +274,7 @@
                                 </tr>
                             </thead>
                             <tbody id="orderTableBody">
-
+    
                             </tbody>
                         </table>
                     </section>
@@ -273,65 +285,46 @@
         <div class="navcontainer1">
             <nav class="nav1">
                 <div class="nav-upper-options">
+                    <div class="nav-option option1">
 
-                </div>
-                <div class="nav-option option1">
-
-                </div>
-                <div class="nav-option option2">
-                    <img class="icn2 menuicn2" id="menuicn2" alt="menu-icon" name="person-circle-outline" src="OIP.jpeg"
-                        style="width: 40px;height: 40px;" role="button">
-                    <div id="container_client" , style="display: none;">
-                        <p id="auth__form-client">CHÀO </p>
                     </div>
-                </div>
-                <div class="navcontainer2">
-                    <nav class="nav2">
-                        <div class="nav-upper-options">
-
-                        </div>
-                        <div class="nav-option option2">
+                    <div id="login-phrase">
+                        <span id="icon__for-more-information"><img name="person-circle-outline" src="OIP.jpeg" style="width: 40px;height: 40px;" role="button" >
                             <div class="feature__group">
-                                <div id="information" , style="display: none;" , style="cursor: pointer;">
-                                    <p id="account__information" , onclick="DisplatInf()"> THÔNG TIN</p>
+                                <div id="information", style="display: none;", style="cursor: pointer;">
+                                    <p id="account__information" onclick="DisplatInf()"> THÔNG TIN</p>
                                 </div>
-                            </div>
-                            <div id="login-words">
-                                <div id="container__login-form">
-                                    <p id="container__login" , onclick="toggleSignupAndLogin('login')"
-                                        style="padding-left: -20px;">ĐĂNG NHẬP</p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="nav-option option3">
-                            <div class="feature__group">
+                                <!-- <div id="container_exit_client" , onclick="logoutUser()">
+                                    <p id="exit__client" , onclick="purchaseButtonClick()">ĐĂNG XUẤT</p>
+                                </div> -->
                                 <div id="container_exit_client" , style="display: none;" , onclick="logoutUser()">
                                     <p id="exit__client">ĐĂNG XUẤT</p>
                                 </div>
+                                
                             </div>
-                            <div class="feature__group">
-                                <div id="login-words">
-                                    <div id="container__signup-form">
-                                        <p id="container__signup" , onclick="toggleSignupAndLogin('signup')" ,
-                                            style="padding-left: -20px;">ĐĂNG KÝ</p>
-
-                                    </div>
-
-
-                                </div>
-
+                        </span>
+                        <div id="login-words">
+                            <div id="container__signup-form">
+                                <p id="container__signup" , onclick="toggleSignupAndLogin('signup')", style="padding-left: -20px;">ĐĂNG KÝ</p>
+                                
                             </div>
+                            <div id="container__login-form">
+                                <p id="container__login" , onclick="toggleSignupAndLogin('login')" style="padding-left: -20px;">ĐĂNG NHẬP</p>
+                                
+                            </div>
+                            <div id="container_client" , style="display: none;">
+                                <p id="auth__form-client">CHÀO </p>
+                            </div>
+                            <!-- <div id="container_exit_client" , style="display: none;" , onclick="logoutUser()">
+                                <p id="exit__client">ĐĂNG XUẤT</p>
+                            </div> -->
                         </div>
-                    </nav>
+                    </div>
+
+
                 </div>
             </nav>
         </div>
-    </div>
-    </div>
-    </div>
-    </nav>
-    </div>
 
     </div>
 
@@ -358,26 +351,16 @@
         menuicn.addEventListener("click", () => {
             nav.classList.toggle("navclose");
         })
-
-
         let menuicn1 = document.querySelector(".menuicn1");
         let nav1 = document.querySelector(".navcontainer1");
 
         menuicn1.addEventListener("click", () => {
             nav1.classList.toggle("navclose1");
         })
-
-        let menuicn2 = document.querySelector(".menuicn2");
-        let nav2 = document.querySelector(".navcontainer2");
-
-        menuicn2.addEventListener("click", () => {
-            nav2.classList.toggle("navclose2");
-        })
-
     </script>
     <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+    
 </body>
 
 </html>

@@ -184,11 +184,13 @@ window.data = [
     }
 ]
 
-
-// var product_data_local = [];
-// for (let i = 0; i < window.data.length; i++) {
-//     localStorage.setItem(i, JSON.stringify(window.data[i]));
-//     product_data_local[i] = JSON.parse(localStorage.getItem(i));
+localStorage.setItem('product', JSON.stringify(window.data));
+var product_data_local = JSON.parse(localStorage.getItem('product')) || [];
+// var product_data_local=[];
+// for(let i =0 ;i<window.data.length;i++)
+// {
+//     localStorage.setItem(i,JSON.stringify(window.data[i]));
+//     product_data_local[i]=JSON.parse(localStorage.getItem(i));
 // }
 
 // console.log(product_data_local);
@@ -197,8 +199,6 @@ window.data = [
 
 // let mainContainer = document.getElementById("myData");
 function render() {
-    localStorage.setItem('product', JSON.stringify(window.data));
-    var product_data_local = JSON.parse(localStorage.getItem('product')) || [];
     for (let i = 0; i < product_data_local.length; i++) {
         let div = `
                 <div class="product" id="${product_data_local[i].category}">
@@ -251,15 +251,13 @@ products.forEach(function (product) {
                             <button>MUA NGAY</button>
                             <p>Mô tả sản phẩm:</p>
                             </br>
-                            <ul>
-                            <li>${product_data_local[i].describe_CPU}</li>
+                            <p>${product_data_local[i].describe_CPU}</p>
                             </br>
-                            <li>${product_data_local[i].describe_RAM}</li>
+                            <p>${product_data_local[i].describe_RAM}</p>
                             </br>
-                            <li>${product_data_local[i].describe_disk}</li>
+                            <p>${product_data_local[i].describe_disk}</p>
                             </br>
-                            <li>${product_data_local[i].describe_VGA}</li>
-                            </ul>
+                            <p>${product_data_local[i].describe_VGA}</p>
                         </div>
                 `
                 newDiv.innerHTML = div;
@@ -372,6 +370,7 @@ function addcart(product_img, product_name, product_price) {
 
 
 
+
 function cartTotal() {
     if (!isLoggedIn) {
         alert('Vui lòng đăng nhập để xem giỏ hàng và thanh toán.');
@@ -394,6 +393,7 @@ function cartTotal() {
     var total_price_value = document.querySelector(".total-price-value");
     total_price_value.innerText = totalALL.toLocaleString('de-DE') + "đ";
 }
+
 
 
 function delete_cart() {
@@ -685,7 +685,15 @@ loadItem();
 
 //////////////////////////////////FORM ĐĂNG NHẬP//////////////////////
 //////////////////////////////////////////////////////////////////////
+var Admin = "ADMIN";
+var admin = {
+    username: 'admin1',
+    password: '123456789',
+    role: 'admin'
+};
+localStorage.setItem(Admin, JSON.stringify([admin]));
 
+var isLoggedIn = false;
 window.addEventListener('beforeunload', function () {
     // Lưu trạng thái hiện tại vào localStorage
     var currentState = {
@@ -694,16 +702,6 @@ window.addEventListener('beforeunload', function () {
     };
     localStorage.setItem('pageState', JSON.stringify(currentState));
 });
-
-var Admin = "ADMIN";
-var admin = {
-    username: 'admin1',
-    password: '123456789',
-    role: 'admin'
-};
-
-var isLoggedIn = false;
-localStorage.setItem(Admin, JSON.stringify([admin]));
 
 document.addEventListener('DOMContentLoaded', function () {
     // Kiểm tra xem có trạng thái đã lưu trước đó hay không khi trang được load lại
@@ -717,10 +715,23 @@ document.addEventListener('DOMContentLoaded', function () {
         // Nếu người dùng đã đăng nhập, cập nhật thông tin người dùng hiện tại
         if (isLoggedIn) {
             setCurrentUser(currentState.currentUser);
+            showUserInfo();
+            // showUserOrders();
         }
 
         // Cập nhật UI dựa trên trạng thái đã lưu
         updateUI();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Call updateUI when the page loads to set the initial state
+    updateUI();
+
+    // Check if the user was logged in before the refresh
+    if (isLoggedIn) {
+        // Update UI for logged-in state after page refresh
+        updateLoggedInUI();
     }
 });
 
@@ -864,8 +875,8 @@ function registerUser() {
     localStorage.setItem('users', JSON.stringify(existingUsers));
 
     // Lưu trạng thái đăng nhập và thông tin người dùng
-    isLoggedIn = true;
-    setCurrentUser(user);
+    // isLoggedIn = true;
+    // setCurrentUser(user);
 
     // Cập nhật giao diện
     //updateUI();
@@ -899,16 +910,7 @@ function getNextUserCode(existingUsers) {
 }
 
 // -----------------------------------------------Sự kiện ấn vào nút đăng nhập-------------------------------------------------//
-document.addEventListener('DOMContentLoaded', function () {
-    // Call updateUI when the page loads to set the initial state
-    updateUI();
 
-    // Check if the user was logged in before the refresh
-    if (isLoggedIn) {
-        // Update UI for logged-in state after page refresh
-        updateLoggedInUI();
-    }
-});
 
 function loginUser() {
     event.preventDefault();
@@ -922,50 +924,50 @@ function loginUser() {
 
     if (existingAdmin && existingAdmin.find(u => u.username === username && u.password == password)) {
         loggedInUser = existingAdmin.find(u => u.username === username);
-        window.location.href = "admin.html";
+        window.location.href = "web_admin/admin.html";
     } else {
         loggedInUser = existingUsers.find(u => u.username === username && u.password === password);
         if (loggedInUser) {
-
-
-            alert('Đăng nhập thành công ');
+            alert('Đăng nhập thành công');
 
             isLoggedIn = true;
 
-            document.getElementById("container__signup-form").style.display = 'none';
-            document.getElementById('container__login-form').style.display = 'none';
+            // document.getElementById("container__signup-form").style.display = 'none';
+            // document.getElementById('container__login-form').style.display = 'none';
 
-            document.getElementById('container_client').style.display = 'block';
-            document.getElementById('auth__form-client').innerHTML = 'CHÀO, ' + username;
+            // document.getElementById('container_client').style.display = 'block';
+            // document.getElementById('auth__form-client').innerHTML = 'CHÀO, ' + username;
 
-            document.getElementById('container_exit_client').style.display = 'block';
+            // document.getElementById('container_exit_client').style.display = 'block';
             setCurrentUser(loggedInUser);
 
             updateUI();
-
+            //showUserInfo();
+            //showUserOrders();
+            location.reload();
+            document.querySelector('.container1').style.display = 'none';
         } else {
             alert('Tên đăng nhập hoặc mật khẩu không đúng');
         }
-        location.reload();
     }
 
 
     document.querySelector('.auth__form-login-username').value = null;
     document.querySelector('.auth__form-login-pasword').value = null;
-
-
+    // location.reload();
+    // document.querySelector('.container1').style.display = 'none';
 }
 
 // document.querySelector('.auth__form-login-btn-submit').addEventListener('click', loginUser());
 
 // -----------------------------------------------Đắng xuất khỏi account-------------------------------------------------//
 function logoutUser() {
-    document.getElementById('container__signup-form').style.display = 'block';
-    document.getElementById('container__login-form').style.display = 'block';
+    // document.getElementById('container__signup-form').style.display = 'block';
+    // document.getElementById('container__login-form').style.display = 'block';
 
-    document.querySelector('.container1').style.display = 'none';
-    document.getElementById('container_client').style.display = 'none';
-    document.getElementById('container_exit_client').style.display = 'none';
+    // document.querySelector('.container1').style.display = 'none';
+    // document.getElementById('container_client').style.display = 'none';
+    // document.getElementById('container_exit_client').style.display = 'none';
 
     // isLoggedIn = false;
 
@@ -983,6 +985,8 @@ function logoutUser() {
     location.reload();
 }
 
+
+// -----------------------------------------------Cập nhật giao diẹn khi đăng nhập, đăng xuất-------------------------------------------------//
 function updateUI() {
     if (isLoggedIn) {
         updateLoggedInUI();
@@ -990,7 +994,6 @@ function updateUI() {
         updateLoggedOutUI();
     }
 }
-
 function updateLoggedInUI() {
     var username = getCurrentUser().username;
 
@@ -1019,7 +1022,7 @@ function updateLoggedOutUI() {
     document.getElementById('information').style.display = 'none';
 }
 
-
+// --------------------------------------Đưa cái dòng chứa dữ liệu như form đăng ký, đăng nhập về lại rỗng --------------------------------------//
 function resetFormFields(...selectors) {
     selectors.forEach(selector => {
         document.querySelector(selector).value = '';
@@ -1027,7 +1030,7 @@ function resetFormFields(...selectors) {
 }
 
 
-// -----------------------------------------------Lấy người dùng hiện tại-------------------------------------------------//
+// -----------------------------------------------Lấy, xoá, lưu người dùng hiện tại-------------------------------------------------//
 function setCurrentUser(user) {
     if (!isLoggedIn) {
         return;
@@ -1068,18 +1071,14 @@ function clearCurrentUser() {
 }
 // -----------------------------------------------Hiện trang thông tin người dùng-------------------------------------------------//
 
-function infor_click(formtype) {
-    var page = document.querySelector('.page__infor-users');
-    //var infor = document.getElementById('account__information');
-
-    if (formtype === 'open') {
-        page.style.display = 'block';
-    }
+function DisplatInf() {
+    var uinfo = document.querySelector(".page__infor-users");
+    uinfo.style.display = 'block';
 }
-
-document.getElementById('account__information').addEventListener('click', function () {
-    infor_click('open');
-})
+function OffInfo() {
+    var uinfo = document.querySelector(".page__infor-users");
+    uinfo.style.display = 'none';
+}
 
 ////////////////////////////////////////////////MUA HÀNG//////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1236,6 +1235,156 @@ function updateCart(productName, productPrice, quantity) {
 const purchaseButton = document.querySelector(".purchase-button");
 purchaseButton.addEventListener('click', handlePurchaseButtonClick);
 
+
+
+
+////////////////////////////////////////////////User Xem lại đơn hàng////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function showUserInfo() {
+    // Lấy thông tin người dùng hiện tại từ localStorage
+    const currentUser = getCurrentUser();
+    // Hiển thị thông tin người dùng trên trang
+    const nameElement = document.querySelector('.user-infor-name');
+    const idElement = document.querySelector('.user-infor-id');
+    const phoneNumElement = document.querySelector('.user-infor-phone-nums');
+    const emailElement = document.querySelector('.user-infor-email');
+
+    nameElement.textContent = `Tên khách hàng: ${currentUser.name}`;
+    idElement.textContent = `Mã khách hàng: ${currentUser.accountcode}`;
+    phoneNumElement.textContent = `Số điện thoại: ${currentUser.phone_num}`;
+    emailElement.textContent = `Địa chỉ Email: ${currentUser.email}`;
+}
+
+
+
+
+
+// Lấy thông tin người dùng hiện tại từ localStorage
+function showUserOrders() {
+    var curren_tUser = getCurrentUser();
+
+    // Lấy danh sách đơn hàng từ localStorage
+    const orderBills = JSON.parse(localStorage.getItem('order_bills')) || [];
+
+    // Hiển thị danh sách đơn hàng trên trang
+    const orderTableBody = document.getElementById('orderTableBody');
+
+    for (var i = 0; i < orderBills.length; i++) {
+        var order = orderBills[i];
+
+        if (order.userCode === curren_tUser.accountcode) {
+            var row = document.createElement('tr');
+            row.innerHTML = `
+            <td style="border-right: 1px solid black;">${order.orderCode}</td>
+            <td style="border-right: 1px solid black;">${order.userCode}</td>
+            <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">
+                <button class="details-button">Chi tiết đơn hàng</button>
+            </td>
+            <td style="border-right: 1px solid black;">${order.orderTime}</td>
+            <td>${order.orderStatus}</td>
+        `;
+
+            // Thêm sự kiện click cho nút "Chi tiết đơn hàng"
+            var detailsButton = row.querySelector('.details-button');
+            detailsButton.addEventListener('click', function () {
+                // Sử dụng hàm showOrderDetails với tham số là index và userCode
+                showOrderDetails(curren_tUser.accountcode);
+            });
+
+            orderTableBody.appendChild(row);
+        }
+    }
+}
+
+
+
+function showOrderDetails(userCode) {
+    const orderBills = JSON.parse(localStorage.getItem('order_bills')) || [];
+
+    // Tìm đơn hàng mà userCode trùng khớp
+    const order = orderBills.find(order => order.userCode === userCode);
+
+    if (order) {
+        const detailsDiv = document.createElement('div');
+        detailsDiv.classList.add('details-container');
+        detailsDiv.style.position = 'fixed';
+        detailsDiv.style.top = '50%';
+        detailsDiv.style.left = '50%';
+        detailsDiv.style.transform = 'translate(-50%, -50%)';
+        detailsDiv.style.backgroundColor = '#fff';
+        detailsDiv.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+        detailsDiv.style.padding = '20px';
+        detailsDiv.style.zIndex = '1000';
+        detailsDiv.style.maxWidth = '80%';
+
+        const closeButton = document.createElement('button');
+        closeButton.classList.add('close-button');
+        closeButton.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '5px';
+        closeButton.style.right = '5px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', function () {
+            detailsDiv.style.display = 'none';
+        });
+
+        detailsDiv.appendChild(closeButton);
+
+        const detailsTable = document.createElement('table');
+        detailsTable.style.width = '100%';
+        detailsTable.style.borderCollapse = 'collapse';
+        detailsTable.style.border = '1px solid #ddd';
+
+        detailsTable.innerHTML = `
+            <thead>
+                <tr>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Sản phẩm</th>
+                    <th style="border: 1px solid #ddd; padding: 8px;">Số lượng</th>
+                    <th style="border: 1px solid #ddd; padding: 8px 10px;">Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${order.orderDetails.map(detail => `
+                    <tr>
+                        <td style="border: 1px solid #ddd; padding: 8px;">${detail.name}</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">${detail.quantity}</td>
+                        <td style="border: 1px solid #ddd; padding: 8px;">${detail.price * detail.quantity}0.000  đ</td>
+                    </tr>
+                `).join('')}
+                <tr>
+                    <td colspan="2" style="border: 1px solid #ddd; text-align: right; padding: 8px;">Tổng giá:</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${calculateTotalPrice(order.orderDetails)}0.000  đ</td>
+                </tr>
+            </tbody>
+        `;
+
+        detailsDiv.appendChild(detailsTable);
+        document.body.appendChild(detailsDiv);
+        detailsDiv.style.zIndex = '1000';
+        detailsDiv.style.display = 'block';
+    } else {
+        console.log('Không thể hiển thị chi tiết đơn hàng.');
+    }
+}
+
+function calculateTotalPrice(orderDetails) {
+    const totalPrice = orderDetails.reduce((total, detail) => total + detail.price * detail.quantity, 0);
+
+    // Round the total price to 3 decimal places (adjust as needed)
+    const roundedTotalPrice = Number(totalPrice.toFixed(3));
+
+    return roundedTotalPrice;
+}
+
+
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////
 //////////////////////XỬ LÍ ĐĂNG XUẤT ĐĂNG NHẬP////////////////////
 
@@ -1251,61 +1400,13 @@ window.addEventListener("storage", function (event) {
     // }
 })
 
+// function DisplatInf(){
+//     var uinfo = document.querySelector(".page__infor-users");
+//     uinfo.style.display = 'block';
+// }
+// function OffInfo(){
+//     var uinfo = document.querySelector(".page__infor-users");
+//     uinfo.style.display = 'none';
+// }
 
 
-
-function toggleUserInfoTable() {
-    var userInfoTable = document.querySelector('.user-info-table');
-    userInfoTable.style.display = (userInfoTable.style.display === 'block') ? 'none' : 'block';
-
-    // Lấy đối tượng dòng thứ nhất trong bảng
-    var userRow = document.getElementById('user-info-row');
-
-    // Kiểm tra và cập nhật nội dung của dòng thứ nhất dựa trên vai trò của người dùng
-    if (userRole === 'user') {
-        userRow.innerHTML = '<td>THÔNG TIN</td>';
-    } else if (userRole === 'admin') {
-        userRow.innerHTML = '<td>TRANG QUẢN TRỊ</td>';
-    }
-}
-
-document.getElementById('user-icon').addEventListener('click', toggleUserInfoTable());
-function filterProductrs(value) {
-    let buttons = document.querySelectorAll(".filter-buttonrs");
-    buttons.forEach(function (button) {
-
-        if (value == button.innerText) {
-            console.log(button);
-            button.classList.add("active");
-        }
-        else {
-            button.classList.remove("active");
-        }
-    });
-    var cards = document.querySelectorAll(".product");
-    cards.forEach(function (card) {
-        if (value == "ALL") {
-            // card.classList.remove("hide");
-            card.style.display = 'block';
-        }
-        else {
-            if (card.id == value) {
-                // card.classList.remove("hide");
-                card.style.display = 'block';
-            }
-            else {
-                // card.classList.add("hide");
-                card.style.display = 'none';
-            }
-        }
-    })
-
-}
-function DisplatInf() {
-    var uinfo = document.querySelector(".page__infor-users");
-    uinfo.style.display = 'block';
-}
-function OffInfo() {
-    var uinfo = document.querySelector(".page__infor-users");
-    uinfo.style.display = 'none';
-}

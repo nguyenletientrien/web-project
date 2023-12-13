@@ -23,8 +23,7 @@ function active_function(value) {
 
 /////////////////////////////////////
 ///render///////////////////////////
-// console.log(window.data); 
-window.data = [
+console.log(window.data); window.data = [
     {
         "number": "1",
         "image": "image/laptopASUS_zenbook14.webp",
@@ -207,13 +206,12 @@ window.data = [
         'describe_VGA': 'VGA: NVIDIA® GeForce RTX 4060 8GB GDDR6'
     }
 ]
-// ==============================================================
 // THONG KE 
 let dataCart = JSON.parse(localStorage.getItem('order_bills'));
 
 let currarray = []
 for (let i = 0; i < dataCart.length; i++) {
-    if (dataCart[i].orderStatus == "Đang chờ xử lý") {
+    if (dataCart[i].orderStatus == "Đã xử lí") {
         dataTime = dataCart[i].orderTime;
         dataProduct = dataCart[i].orderDetails
         console.log(JSON.stringify(dataTime));
@@ -263,7 +261,7 @@ function showgallery(currarray) {
 let search_static = document.querySelector('#myInput_searchbar');
 let static_product = document.querySelector('#staticproduct');
 let item = document.querySelector(".items");
-let btn_static = document.querySelector(".searching-button-static");
+let btn_static = document.querySelector(".searching-button");
 
 btn_static.addEventListener('click', function () {
     let text = search_static.value;
@@ -293,13 +291,29 @@ btn_static.addEventListener('click', function () {
     }
 
 })
-// ========================================================
+// for (let i = 0; i < data.length; i++) {
+//     let h3 = `
+//     <tr class="product">
+//     <td style="width:25%"> 
+
+//         <img src="${data[i].image}">
+//         <div class="des-contaner">
+//             <div class="title">${data[i].title}</div>
+//     </div> 
+//     </td>
+//     <td style="width:35%;padding-right:8%"> ${data[i].price} </td>
+//     <td style="width:35%;padding-right:18%"> nnn </td>
+//     <td> mmm </td>
+//     </tr>
+//     `
+//     document.querySelector('.products').innerHTML += h3;
+// }
 function filterProduct(value) {
     let buttons = document.querySelectorAll(".filter-button");
     buttons.forEach(function (button) {
 
         if (value == button.innerText) {
-            // console.log(button);
+            console.log(button);
             button.classList.add("active");
         }
         else {
@@ -336,7 +350,7 @@ function searching_method() {
     var elements = document.querySelectorAll(".title");
 
     var search_input = searching_button.parentElement.querySelector("input").value;
-    // console.log(cards, elements, search_input);
+    console.log(cards, elements, search_input);
     elements.forEach(function (element, index) {
         if (element.innerText.toLowerCase().includes(search_input.toLowerCase())) {
             // cards[index].classList.remove("hide");
@@ -438,7 +452,7 @@ addproduct_btn.addEventListener('click', function () {
 })
 
 let close_btn = document.querySelector('.addproduct span');
-// console.log(close_btn);
+console.log(close_btn);
 close_btn.addEventListener('click', function () {
     document.querySelector('.addproduct').style.display = 'none';
 })
@@ -482,7 +496,7 @@ let vitri = 0;
 product_found_name.addEventListener('change', function (event) {
     var productArray = JSON.parse(localStorage.getItem('product'));
     let showProductFound = document.querySelector('.showProductFound');
-    // console.log("event target value la: ", event.target.value);
+    console.log("event target value la: ", event.target.value);
     for (let i = 0; i < productArray.length; i++) {
         if (event.target.value === productArray[i].title) {
             showProductFound.innerHTML = `
@@ -497,11 +511,11 @@ product_found_name.addEventListener('change', function (event) {
     }
 })
 let fix_input_file = document.querySelector('.fixproduct .input_file');
-// console.log(fix_input_file);
+console.log(fix_input_file);
 var img_of_fix;
 fix_input_file.addEventListener('change', function () {
     img_of_fix = window.URL.createObjectURL(new Blob(input.files[0], { type: "application/zip" })).replaceAll('blob:', '');
-    // console.log("img_of_fix: ", img_of_fix)
+    console.log("img_of_fix: ", img_of_fix)
 })
 fix_product_btn.addEventListener('click', function (event) {
     let fix_input_file = event.target.parentElement.querySelector('.input_file');
@@ -538,20 +552,20 @@ function delete_function(event, productiddelete) {
         return;
     }
     var productArray = JSON.parse(localStorage.getItem('product'));
-    // console.log("xuat trong ham xoa; ", productArray);
-    // console.log(productArray[0]);
-    // console.log("number cua phan tu dau tien:", productArray[0].number)
-    // console.log("id delete la:", productiddelete);
-    // console.log("type cua iddelette:", typeof (productiddelete));
-    // console.log('type cua arry[0]: ', typeof (productArray[0].number));
+    console.log("xuat trong ham xoa; ", productArray);
+    console.log(productArray[0]);
+    console.log("number cua phan tu dau tien:", productArray[0].number)
+    console.log("id delete la:", productiddelete);
+    console.log("type cua iddelette:", typeof (productiddelete));
+    console.log('type cua arry[0]: ', typeof (productArray[0].number));
     for (var i = 0; i < productArray.length; i++) {
 
         if (productiddelete === Number(productArray[i].number)) {
             productArray.splice(i, 1);
-            // console.log("if dung", productiddelete);
+            console.log("if dung", productiddelete);
         }
     }
-    // console.log(productArray.length);
+    console.log(productArray.length);
     localStorage.setItem('product', JSON.stringify(productArray));
 }
 
@@ -573,7 +587,7 @@ for (let i = 0; i < product_datas.length; i++) {
     find_prodcut_select.innerHTML += newtr;
 }
 
-// console.log(document.querySelector('.products'));
+console.log(document.querySelector('.products'));
 
 
 
@@ -582,7 +596,6 @@ for (let i = 0; i < product_datas.length; i++) {
 
 let render_users = JSON.parse(localStorage.getItem('users'));
 let userTableBody = document.getElementById('userTableBody');
-// console.log(render_users);
 for (let i = 0; i < render_users.length; i++) {
     let newtr = `
     <tr>
@@ -596,41 +609,10 @@ for (let i = 0; i < render_users.length; i++) {
     userTableBody.innerHTML += newtr;
 }
 
-// let render_orders = JSON.parse(localStorage.getItem('order_bills')) || [];
-// let orderTable = document.getElementById('orderTableBody');
 
-// for (let i = 0; i < render_orders.length; i++) {
-//     const orderDetailsString = render_orders[i].orderDetails.map(detail => {
-//         return `${detail.name} x${detail.quantity}`;
-//     }).join(', ');
-
-//     let newtr = `
-//         <tr>
-//             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">${render_orders[i].orderCode}</td>
-//             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">${render_orders[i].userCode}</td>
-//             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">
-//             <div class="orddrts">
-//             ${orderDetailsString}
-//             </div>
-//             <div class="orddt">
-
-//             </div>
-//             </td>
-//             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">${render_orders[i].orderTime}</td>
-//             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">${render_orders[i].orderStatus}</td>
-//             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">
-//             <div>
-//             <input type="checkbox" data-toggle="switchbutton" checked data-width="125" checked data-onlabel="Pending" data-offlabel="Completed" data-onstyle="success" data-offstyle="danger">      
-//             </td>
-//         </tr>
-//         `;
-//     orderTable.innerHTML += newtr;
-
-// }
 
 let render_orders = JSON.parse(localStorage.getItem('order_bills')) || [];
 let orderTable = document.getElementById('orderTableBody');
-
 
 for (let i = 0; i < render_orders.length; i++) {
     const orderDetailsString = render_orders[i].orderDetails.map(detail => {
@@ -646,13 +628,28 @@ for (let i = 0; i < render_orders.length; i++) {
             </td>
             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;">${render_orders[i].orderTime}</td>
             <td style="text-align:left;border-top:1px solid black;border-right: 1px solid black;padding:5px 0px;, display: flex;justify-content: center;">
-            <div>
-             <input type="checkbox" data-toggle="switchbutton" checked data-width="125" checked data-onlabel="Pending" data-offlabel="Completed" data-onstyle="success" data-offstyle="danger">      
-             </td>
+                <div>
+                    <input type="checkbox" data-toggle="switchbutton" data-index="${i}" ${render_orders[i].orderStatus === 'Đã xử lí' ? 'checked' : ''} data-width="125" data-onlabel="Đã xử lí" data-offlabel="Đang xử lí" data-onstyle="success" data-offstyle="danger">
+                </div>
+            </td>
         </tr>
     `;
     orderTable.innerHTML += newtr;
 }
+
+// Thêm sự kiện "change" cho các checkbox
+const checkboxes = document.querySelectorAll('input[data-toggle="switchbutton"]');
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function () {
+        const index = this.getAttribute('data-index');
+        if (this.checked) {
+            render_orders[index].orderStatus = 'Đã xử lí';
+        } else {
+            render_orders[index].orderStatus = 'Đang chờ xử lý'; // Hoặc giá trị mà bạn sử dụng khi trạng thái là "Đang chờ xử lý"
+        }
+        localStorage.setItem('order_bills', JSON.stringify(render_orders));
+    });
+});
 
 
 let openDetailsContainer = null; // Track the currently open details container
@@ -787,6 +784,7 @@ window.onclick = function (event) {
         }
     }
 }
+
 
 
 
